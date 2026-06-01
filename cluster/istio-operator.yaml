@@ -1,0 +1,18 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  profile: default
+  components:
+    pilot:
+      k8s:
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+  values:
+    global:
+      proxy:
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 10m
