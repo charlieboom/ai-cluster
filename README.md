@@ -24,3 +24,10 @@ argocd login localhost:8080 --insecure
 install istio:
 
 istioctl install -f cluster/istio-operator.yaml -y
+
+Ollama:
+
+helm repo add ollama-helm https://otwld.github.io/ollama-helm/
+helm repo update
+
+k apply -f argocd/apps/ollama-app.yaml

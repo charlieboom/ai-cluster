@@ -1,0 +1,11 @@
+ollama:
+  models:
+    - llama3.2
+
+resources:
+  requests:
+    memory: 1Gi
+    cpu: 200m
+  limits:
+    memory: 4Gi
+    cpu: 2000m
