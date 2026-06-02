@@ -1,6 +1,9 @@
 ollama:
   models:
-    - llama3.2
+    pull:
+      - llama3.2
+    run:
+      - llama3.2
 
 resources:
   requests:
