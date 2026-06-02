@@ -31,3 +31,9 @@ helm repo add ollama-helm https://otwld.github.io/ollama-helm/
 helm repo update
 
 k apply -f argocd/apps/ollama-app.yaml
+
+install grafana and prometheus:
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+k apply -f argocd/apps/monitoring.yaml

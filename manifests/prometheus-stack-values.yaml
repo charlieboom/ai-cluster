@@ -1,0 +1,23 @@
+grafana:
+  enabled: true
+  adminPassword: admin
+
+prometheus:
+  prometheusSpec:
+    retention: 1h
+    resources:
+      requests:
+        memory: 512Mi
+        cpu: 250m
+      limits:
+        memory: 1Gi
+        cpu: 500m
+
+alertmanager:
+  enabled: false
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
