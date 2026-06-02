@@ -19,6 +19,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: ollama
   syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        istio-injection: enabled
     automated:
       prune: true
       selfHeal: true
