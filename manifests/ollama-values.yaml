@@ -2,8 +2,8 @@ ollama:
   models:
     pull:
       - llama3.2
-    run:
-      - llama3.2
+    run: []
+      # - llama3.2
     create: []
 
 resources:
