@@ -8,12 +8,12 @@ metadata:
     app: {{ .Values.gateway.name }}
 spec:
   selector:
-    istio: ingressgateway # Use Istio's built-in ingress gateway
+    istio: ingressgateway  # Use the default Istio ingress gateway
   servers:
   - port:
-      number: {{ .port.number | default 80 }}
-      name: {{ .port.name | default "http" }}
-      protocol: {{ .port.protocol | default "HTTP" }}
+      number: {{ (.port | default dict).number | default 80 }}
+      name: {{ (.port | default dict).name | default "http" }}
+      protocol: {{ (.port | default dict).protocol | default "HTTP" }}
     hosts:
     {{- toYaml .hosts | nindent 4 }}
     {{- if .tls }}
