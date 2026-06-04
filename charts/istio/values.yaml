@@ -10,13 +10,13 @@ virtualServices:
     prefix: /api
     destinationHost: ollama.ollama.svc.cluster.local
     port: 11434
-  grafana:
-    host: "*"
-    prefix: /grafana
-    destinationHost: kube-prometheus-stack-grafana.monitoring.svc.cluster.local
-    port: 80
-  vault:
-    host: "*"
-    prefix: /v1
-    destinationHost: vault.vault.svc.cluster.local
-    port: 8200
+  # grafana:
+  #   host: "*"
+  #   prefix: /grafana
+  #   destinationHost: kube-prometheus-stack-grafana.monitoring.svc.cluster.local
+  #   port: 80
+  # vault:
+  #   host: "*"
+  #   prefix: /vault
+  #   destinationHost: vault.vault.svc.cluster.local
+  #   port: 8200
