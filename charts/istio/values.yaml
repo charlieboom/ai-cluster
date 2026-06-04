@@ -2,7 +2,6 @@ gateway:
   name: ai-platform-gateway
   namespace: istio-system
   hosts: 
-    host: 
     - "*"
 
 # Define all your mesh routes here

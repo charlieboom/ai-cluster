@@ -15,7 +15,9 @@ spec:
       name: {{ (.port | default dict).name | default "http" }}
       protocol: {{ (.port | default dict).protocol | default "HTTP" }}
     hosts:
-    {{- toYaml .hosts | nindent 4 }}
+    {{- range .Values.gateway.hosts }}
+    - {{ . | quote }}
+    {{- end }}
     {{- if .tls }}
     tls:
       mode: {{ .tls.mode | default "SIMPLE" }}
