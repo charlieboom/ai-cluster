@@ -2,7 +2,7 @@ gateway:
   name: ai-platform-gateway
   namespace: istio-system
   hosts: 
-    - "*"
+    - "*.charlie.dev"
 
 # Define all your mesh routes here
 virtualServices:
