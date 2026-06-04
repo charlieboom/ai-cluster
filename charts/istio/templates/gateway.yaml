@@ -1,0 +1,25 @@
+# charts/istio/templates/gateway.yaml
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.gateway.name }}
+  namespace: {{ .Values.gateway.namespace }}
+  labels:
+    app: {{ .Values.gateway.name }}
+spec:
+  selector:
+    istio: ingressgateway # Use Istio's built-in ingress gateway
+  servers:
+  - port:
+      number: {{ .port.number | default 80 }}
+      name: {{ .port.name | default "http" }}
+      protocol: {{ .port.protocol | default "HTTP" }}
+    hosts:
+    {{- toYaml .hosts | nindent 4 }}
+    {{- if .tls }}
+    tls:
+      mode: {{ .tls.mode | default "SIMPLE" }}
+      {{- if .tls.credentialName }}
+      credentialName: {{ .tls.credentialName }}
+      {{- end }}
+    {{- end }}

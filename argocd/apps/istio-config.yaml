@@ -1,0 +1,22 @@
+# argocd/apps/istio-config.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-config
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: istio-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/charlieboom/ai-cluster
+    path: charts/istio
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

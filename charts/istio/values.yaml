@@ -1,0 +1,22 @@
+gateway:
+  name: ai-platform-gateway
+  namespace: istio-system
+  host: "*"
+
+# Define all your mesh routes here
+virtualServices:
+  ollama:
+    host: "*"
+    prefix: /api
+    destinationHost: ollama.ollama.svc.cluster.local
+    port: 11434
+  grafana:
+    host: "*"
+    prefix: /grafana
+    destinationHost: kube-prometheus-stack-grafana.monitoring.svc.cluster.local
+    port: 80
+  vault:
+    host: "*"
+    prefix: /v1
+    destinationHost: vault.vault.svc.cluster.local
+    port: 8200

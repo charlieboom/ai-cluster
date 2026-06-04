@@ -1,0 +1,26 @@
+{{- $gatewayName := .Values.gateway.name -}}
+{{- $gatewayNamespace := .Values.gateway.namespace -}}
+
+{{- range $name, $config := .Values.virtualServices }}
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ $name }}
+  # Placing the VirtualService in the target namespace is standard practice
+  namespace: {{ index (splitList "." $config.destinationHost) 1 }}
+spec:
+  hosts:
+  - {{ $config.host | quote }}
+  gateways:
+  - {{ $gatewayNamespace }}/{{ $gatewayName }}
+  http:
+  - match:
+    - uri:
+        prefix: {{ $config.prefix }}
+    route:
+    - destination:
+        host: {{ $config.destinationHost }}
+        port:
+          number: {{ $config.port }}
+---
+{{- end }}
