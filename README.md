@@ -37,3 +37,5 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 
 k apply -f argocd/apps/monitoring.yaml
+
+k apply -f argocd/apps/istio-config.yaml
